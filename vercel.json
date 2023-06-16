@@ -4,7 +4,7 @@
     { "src": "*.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "server.js" }
+    { "src": "/(.*)", "dest": "/" }
   ],
   "env": {
     "MONGO_URI": "mongodb+srv://sooraj:sooraj@cluster0.4wdleff.mongodb.net/?retryWrites=true&w=majority"
