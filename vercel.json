@@ -1,13 +1,13 @@
 {
   "version": 2,
   "builds": [
-    { "src": "server.js", "use": "@vercel/node" }
+    { "src": "*.js", "use": "@vercel/node" }
   ],
   "routes": [
     { "src": "/(.*)", "dest": "server.js" }
   ],
   "env": {
     "MONGO_URI": "mongodb+srv://sooraj:sooraj@cluster0.4wdleff.mongodb.net/?retryWrites=true&w=majority"
-	"SECRET_KEY": "IAMKHALILAHMAD"
+    "SECRET_KEY": "IAMKHALILAHMAD"
   }
 }
