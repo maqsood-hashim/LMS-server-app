@@ -7,11 +7,9 @@ const mongoose = require("mongoose");
 require('dotenv').config()
 const { MONGO_URI } = require("./config/keys");
 app.use(express.json());
-const corsOptions = {
-  origin: 'https://kind-blue-coral-hose.cyclic.app/',
-};
 
-app.use(cors(corsOptions));
+
+app.use(cors());
 
 const nodemailer = require('nodemailer');
 
