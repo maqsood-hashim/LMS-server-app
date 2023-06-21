@@ -9,6 +9,7 @@ const gradeSchema = new mongoose.Schema({
   week3: { type: Number },
   week4: { type: Number },
   week5: { type: Number },
+   mega: { type: Number },
 });
 
 const Grade = mongoose.model('Grade', gradeSchema);
