@@ -4,7 +4,7 @@ const {
   updateStatus__controller,
   disapprove__controller,
   getQuestionUserStats,
-  
+   updateAdminInfo,
   getUsersController
 
 } = require("../controllers/authController");
@@ -31,5 +31,6 @@ router.put("/update-status/:userId",updateStatus__controller);
 router.put("/disapprove/:userId",disapprove__controller);
 router.get('/stats', getQuestionUserStats);
 router.get('/users', getUsersController);
+router.put('/update-admin/:id',upload.single('profilePicture'), updateAdminInfo);
 
 module.exports = router;
