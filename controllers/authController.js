@@ -164,3 +164,50 @@ module.exports.getQuestionUserStats = async (req, res, next) => {
     controllerError(error, res, "Error occurred");
   }
 };
+
+
+
+
+       
+ module.exports.updateAdminInfo = async (req, res, next) => {
+   try {
+     const { id } = req.params;
+     const { userName, email, password, confirmPassword, status, role } = req.body;
+     let picUrl;
+ 
+     if (req.file) {
+       const pic = await cloudinary.uploader.upload(req.file.path);
+       picUrl = pic.secure_url;
+     }
+ 
+     const user = await UserModel.findById(id);
+ 
+     if (!user) {
+       return res.status(404).json({
+         errors: { user: "User not found" },
+       });
+     }
+     user.id = id;
+     user.userName = userName;
+     user.email = email;
+     user.status = '1';
+     user.role = "Admin";
+     if (password) {
+       const hash = await bcrypt.hash(password, 10);
+       user.password = hash;
+     }
+     if (picUrl) {
+       user.profilePicture = picUrl;
+     }
+ 
+     await user.save();
+ 
+     res.status(200).json({
+       message: "User information updated successfully",
+       userData: user,
+     });
+   } catch (error) {
+     console.error(error);
+     res.status(500).json({ error: "Internal server error" });
+   }
+ };
